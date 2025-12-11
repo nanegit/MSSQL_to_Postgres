@@ -5,7 +5,6 @@ from domain.models import MigrationStatistics, MigrationResult, Table
 
 
 class MigrateDatabaseUseCase:
-    """Use Case - Database միգրացիա"""
     
     def __init__(self, 
                  source_db: ISourceDatabase,
@@ -21,7 +20,6 @@ class MigrateDatabaseUseCase:
         self.stats = MigrationStatistics()
     
     def execute(self) -> MigrationStatistics:
-        """Կատարել ամբողջական միգրացիան"""
         try:
             self.logger.info("Կապեր հաստատվում են...")
             self.source_db.connect()
@@ -63,7 +61,6 @@ class MigrateDatabaseUseCase:
             self.target_db.disconnect()
     
     def _migrate_table(self, table_name: str) -> MigrationResult:
-        """Միգրացնել մեկ աղյուսակ"""
         start_time = datetime.now()
         
         try:
@@ -99,7 +96,6 @@ class MigrateDatabaseUseCase:
             )
     
     def _migrate_table_data(self, table: Table) -> int:
-        """Միգրացնել աղյուսակի տվյալները"""
         total_rows = self.source_db.count_rows(table.name)
         
         if total_rows == 0:

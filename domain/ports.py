@@ -4,7 +4,6 @@ from .models import Table, Index, Column
 
 
 class ISourceDatabase(ABC):
-    """Port - Source database (MSSQL)"""
     
     @abstractmethod
     def connect(self) -> None:
@@ -33,7 +32,6 @@ class ISourceDatabase(ABC):
 
 
 class ITargetDatabase(ABC):
-    """Port - Target database (PostgreSQL)"""
     
     @abstractmethod
     def connect(self) -> None:
@@ -70,7 +68,6 @@ class ITargetDatabase(ABC):
 
 
 class ITypeMapper(ABC):
-    """Port - Type mapping service"""
     
     @abstractmethod
     def map_type(self, column: Column) -> str:
@@ -78,7 +75,6 @@ class ITypeMapper(ABC):
 
 
 class ILogger(ABC):
-    """Port - Logging service"""
     
     @abstractmethod
     def info(self, message: str) -> None:

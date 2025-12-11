@@ -1,8 +1,3 @@
-# ============================================================================ 
-# ՖԱՅԼ: infrastructure/adapters/postgresql_adapter.py
-# ============================================================================
-
-"""PostgreSQL Database Adapter"""
 
 import psycopg2
 from psycopg2.extras import execute_batch
@@ -12,7 +7,6 @@ from domain.models import Table, Index
 
 
 class PostgreSQLAdapter(ITargetDatabase):
-    """PostgreSQL database adapter with automatic DB creation"""
 
     def __init__(self, config: Dict[str, str], type_mapper: ITypeMapper):
         self.config = config
@@ -20,7 +14,6 @@ class PostgreSQLAdapter(ITargetDatabase):
         self.connection = None
 
     def connect(self) -> None:
-        # Նախ, կապը հաստատում ենք առանց database-ի՝ միայն server-ի հետ
         temp_conn = psycopg2.connect(
             host=self.config['host'],
             port=self.config.get('port', 5432),
@@ -30,7 +23,6 @@ class PostgreSQLAdapter(ITargetDatabase):
         temp_conn.autocommit = True
         temp_cursor = temp_conn.cursor()
 
-        # Ստուգել, եթե բազան գոյություն չունի՝ ստեղծել
         db_name = self.config['database']
         temp_cursor.execute(f"SELECT 1 FROM pg_database WHERE datname='{db_name}'")
         exists = temp_cursor.fetchone()
@@ -41,7 +33,6 @@ class PostgreSQLAdapter(ITargetDatabase):
         temp_cursor.close()
         temp_conn.close()
 
-        # Հիմա կապը հաստատել արդեն target database-ի հետ
         self.connection = psycopg2.connect(
             host=self.config['host'],
             port=self.config.get('port', 5432),
@@ -96,7 +87,6 @@ class PostgreSQLAdapter(ITargetDatabase):
         cursor.close()
 
     def begin_transaction(self) -> None:
-        # psycopg2-ը արդեն transaction-ը կառավարում է autocommit = False
         pass
 
     def commit_transaction(self) -> None:

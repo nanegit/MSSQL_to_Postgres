@@ -5,7 +5,6 @@ from domain.models import Table, Column, Index
 
 
 class MSSQLAdapter(ISourceDatabase):
-    """MSSQL database adapter"""
     
     def __init__(self, config: Dict[str, str], type_mapper: ITypeMapper):
         self.config = config

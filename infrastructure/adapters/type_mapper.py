@@ -3,7 +3,6 @@ from domain.models import Column
 
 
 class MSSQLToPostgreSQLTypeMapper(ITypeMapper):
-    """MSSQL to PostgreSQL type mapper"""
     
     TYPE_MAP = {
         'int': 'INTEGER', 'bigint': 'BIGINT', 'smallint': 'SMALLINT',

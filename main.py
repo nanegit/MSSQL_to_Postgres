@@ -9,10 +9,10 @@ def main():
     
     # Կոնֆիգուրացիա
     mssql_config = {
-    'server': r'DESKTOP-0HV19S3\SQLEXPRESS',  # Ձեր instance անունը
-    'database': 'Union',                   # Ձեր տվյալների բազան
+    'server': r'DESKTOP-0HV19S3\SQLEXPRESS',  
+    'database': 'Union',                   
     'username': 'DESKTOP-0HV19S3\\intel', 
-    'trusted_connection': 'yes'# Ձեր SQL Server օգտվողը             # Ձեր գաղտնաբառը
+    'trusted_connection': 'yes' 
 }
 
     

@@ -1,9 +1,9 @@
-from __future__ import annotations  # թույլ է տալիս օգտագործել forward references
+from __future__ import annotations  
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Any, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .ports import ITypeMapper  # միայն type hints-ի համար
+    from .ports import ITypeMapper  
 
 @dataclass
 class Column:
@@ -16,7 +16,6 @@ class Column:
     default_value: Optional[str] = None
     
     def to_postgresql_type(self, type_mapper: 'ITypeMapper') -> str:
-        """Փոխարկել PostgreSQL տիպի"""
         return type_mapper.map_type(self)
 
 @dataclass

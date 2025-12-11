@@ -7,7 +7,6 @@ from infrastructure.adapters.logger_adapter import PythonLoggingAdapter
 
 
 class MigrationServiceFactory:
-    """Factory for creating migration service"""
     
     @staticmethod
     def create(mssql_config: Dict[str, str], pg_config: Dict[str, str],

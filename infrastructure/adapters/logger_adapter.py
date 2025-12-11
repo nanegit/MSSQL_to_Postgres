@@ -3,7 +3,6 @@ from domain.ports import ILogger
 
 
 class PythonLoggingAdapter(ILogger):
-    """Python logging adapter"""
     
     def __init__(self):
         logging.basicConfig(
